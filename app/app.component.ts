@@ -22,10 +22,11 @@ export class AppComponent {
   constructor(){
     this.meals = [
       new Meal("Toast and OJ", "Didn't eat the crust. I hate crust.", 85, 0),
-      new Meal("Big Mac and Soda", "The soda was diet Coke!", 541, 1)
+      new Meal("Big Mac and Soda", "The soda was diet Coke!", 541, 1),
+      new Meal("Top Ramen", "Not very healthy. Ate it in a pinch.", 400, 2),
+      new Meal("Large Combo Pizza", "Extra Cheese!", 1250, 3)
     ];
   }
   mealWasSelected(clickedMeal: Meal): void {
-    console.log(this.meals, clickedMeal); //take this out later.
   }
 }
