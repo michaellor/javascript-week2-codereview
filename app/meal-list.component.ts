@@ -11,7 +11,7 @@ import { EditMealComponent } from './edit-meal.component';
   directives: [NewMealComponent, MealComponent, EditMealComponent],
   template: `
     <div class="container">
-      <new-meal (onSubmitNewMeal)="creatMeal($event)">
+      <new-meal (onSubmitNewMeal)="createMeal($event)">
       </new-meal>
     </div>
     <div class="container">
@@ -37,5 +37,10 @@ export class MealListComponent {
   mealClicked(clickedMeal: Meal): void {
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
+  }
+  createMeal(mealArray: string[]): void {
+    this.mealList.push(
+      new Meal(mealArray[0], mealArray[1], Number(mealArray[2]), this.mealList.length)
+    );
   }
 }

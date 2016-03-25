@@ -5,7 +5,7 @@ import { Meal } from './meal.model';
   selector: 'new-meal',
   outputs: ['onSubmitNewMeal'],
   template: `
-    <div class="container meal-form">
+    <div class="meal-form">
       <h4>New Meal Entry</h4>
       <input placeholder="Name" type="text" class="input-md" #newName>
       <input placeholder="Details" type="text" class="input-md" #newDetails>
@@ -24,8 +24,8 @@ export class NewMealComponent {
   addMeal(userName: HTMLInputElement, userDetails: HTMLInputElement, userCalories: HTMLInputElement) {
     this.newMeal = [userName.value, userDetails.value, userCalories.value];
     this.onSubmitNewMeal.emit(this.newMeal);
-    userName.value = "";
-    userDetails.value = "";
-    userCalories.value = "";
+    userName.value ="";
+    userDetails.value ="";
+    userCalories.value ="";
   }
 }
