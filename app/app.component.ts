@@ -1,13 +1,13 @@
 import { Component, EventEmitter } from 'angular2/core';
-import { Component, EventEmitter } from 'angular2/core';
 import { Meal } from './meal.model';
+import { NewMealComponent } from './new-meal.component';
 import { MealListComponent } from './meal-list.component';
 import { MealComponent } from './meal.component';
 import { EditMealComponent } from './edit-meal.component';
 
 @Component({
   selector: 'my-app',
-  directives: [MealListComponent],
+  directives: [MealListComponent, NewMealComponent],
   template: `
     <div class="container">
       <h1>Mega Meal Tracker</h1>
@@ -28,14 +28,5 @@ export class AppComponent {
   }
   mealWasSelected(clickedMeal: Meal): void {
     console.log(this.meals, clickedMeal); //take this out later.
-  }
-}
-
-export class Meal {
-  public empty: boolean = false;
-  constructor(public name: string,
-              public details: string,
-              public calories: number,
-              public id: number) {
   }
 }
