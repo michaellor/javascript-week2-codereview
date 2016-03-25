@@ -61,3 +61,13 @@ export class MealListComponent {
     this.filterCalories = filterOption;
   }
 }
+
+
+
+// <div *ngIf='displayDetails'>
+//     <button (click)='hideDetails()'>Hide Food Details</button>
+//       <new-meal (onNewMealSubmit)="createMeal($event)"></new-meal>
+//     </div>
+//     <div *ngIf='!displayDetails'>
+//       <button (click)='showDetails()'>Show Food Details</button>
+//     </div>
