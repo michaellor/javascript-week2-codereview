@@ -7,8 +7,9 @@ import { MealListComponent } from './meal-list.component';
   selector: 'my-app',
   directives: [MealListComponent, NewMealComponent],
   template: `
-    <div class="container">
-      <h1>Mega Meal Tracker</h1>
+    <div class="container headerdiv">
+      <h1 class="white_text">Meal Tracker App</h1>
+      <p>by Michael Lor - Epicodus 2016</p>
       <meal-list
       [mealList]="meals"
       (onMealSelect)="mealWasSelected($event)">

@@ -14,29 +14,35 @@ import { CaloriesPipe } from './calories.pipe';
   directives: [NewMealComponent, MealComponent, EditMealComponent, DetailComponent],
   template: `
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-sm-6">
+        <hr>
         <div>
           <new-meal (onSubmitNewMeal)="createMeal($event)">
           </new-meal>
         </div>
+        <br><br>
         <select (change)="caloriesChange($event.target.value)" class="filter">
           <option value="">Show All</option>
           <option value="high">High Calorie Foods (over 300)</option>
           <option value="low">Low Calorie Foods (under 300)</option>
         </select>
+        <br><br>
+        <hr>
         <div>
+          <h3>Meal List</h3>
           <meal-display *ngFor="#currentMeal of mealList | calories:filterCalories"
             (click)="mealClicked(currentMeal)"
             [class.selected]="currentMeal === selectedMeal"
             [meal]="currentMeal">
           </meal-display>
         </div>
+        <hr>
+      </div>
+      <div class="col-sm-6">
         <div>
           <detail-display *ngIf="selectedMeal" [meal]="selectedMeal">
           </detail-display>
         </div>
-      </div>
-      <div class="col-md-6">
         <div class="container">
           <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal">
           </edit-meal>
