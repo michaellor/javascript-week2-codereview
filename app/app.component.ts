@@ -1,9 +1,27 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
+
+@Component({
+  selector: 'meal-display',
+  inputs: ['meal'],
+  template: `
+    <div class="container">
+      <h3>Meal Entry #{{ meal.id + 1}}:</h3>
+      <h4>Name: {{ meal.name }}</h4>
+      <h4>Details: {{ meal.details }}</h4>
+      <h4>Calories: {{ meal.calories }}</h4>
+    </div>
+  `
+})
+export class MealComponent {
+  public meal: Meal;
+}
+
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
+  directives: [MealComponent],
   template: `
     <div class="container">
       <meal-display *ngFor="#currentMeal of mealList"
@@ -14,7 +32,6 @@ import { Component } from 'angular2/core';
     </div>
   `
 })
-
 export class MealListComponent {
   public mealList: Meal[];
   public onMealSelect: EventEmitter<Meal>;
@@ -30,7 +47,7 @@ export class MealListComponent {
 
 @Component({
   selector: 'my-app',
-  directives: [MealListComponent]
+  directives: [MealListComponent],
   template: `
     <div class="container">
       <h1>Mega Meal Tracker</h1>
@@ -41,7 +58,6 @@ export class MealListComponent {
     </div>
   `
 })
-
 export class AppComponent {
   public meals: Meal[];
   constructor(){
@@ -51,7 +67,7 @@ export class AppComponent {
     ];
   }
   mealWasSelected(clickedMeal: Meal): void {
-    console.log(meals, clickedMeal); //take this out later.
+    console.log(this.meals, clickedMeal); //take this out later.
   }
 }
 
