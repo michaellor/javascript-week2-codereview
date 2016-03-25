@@ -3,6 +3,7 @@ import { Meal } from './meal.model';
 import { MealComponent } from './meal.component';
 import { NewMealComponent } from './new-meal.component';
 import { EditMealComponent } from './edit-meal.component';
+import { DetailComponent } from './meal-details.component';
 import { CaloriesPipe } from './calories.pipe';
 
 @Component({
@@ -10,7 +11,7 @@ import { CaloriesPipe } from './calories.pipe';
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
   pipes: [CaloriesPipe],
-  directives: [NewMealComponent, MealComponent, EditMealComponent],
+  directives: [NewMealComponent, MealComponent, EditMealComponent, DetailComponent],
   template: `
     <div class="row">
       <div class="col-md-6">
@@ -29,6 +30,10 @@ import { CaloriesPipe } from './calories.pipe';
             [class.selected]="currentMeal === selectedMeal"
             [meal]="currentMeal">
           </meal-display>
+        </div>
+        <div>
+          <detail-display *ngIf="selectedMeal" [meal]="selectedMeal">
+          </detail-display>
         </div>
       </div>
       <div class="col-md-6">
@@ -61,13 +66,3 @@ export class MealListComponent {
     this.filterCalories = filterOption;
   }
 }
-
-
-
-// <div *ngIf='displayDetails'>
-//     <button (click)='hideDetails()'>Hide Food Details</button>
-//       <new-meal (onNewMealSubmit)="createMeal($event)"></new-meal>
-//     </div>
-//     <div *ngIf='!displayDetails'>
-//       <button (click)='showDetails()'>Show Food Details</button>
-//     </div>

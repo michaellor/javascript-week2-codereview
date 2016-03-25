@@ -4,12 +4,15 @@
   "main": "",
   "license": "ISC",
   "moduleType": [],
-  "homepage": "https://github.com/michaellor/javascript-angularJS-skeleton",
+  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
 }
