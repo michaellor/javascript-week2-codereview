@@ -1,49 +1,9 @@
 import { Component, EventEmitter } from 'angular2/core';
-
-@Component({
-  selector: 'meal-display',
-  inputs: ['meal'],
-  template: `
-    <div class="container">
-      <h3>Meal Entry #{{ meal.id + 1}}:</h3>
-      <h4>Name: {{ meal.name }}</h4>
-      <h4>Details: {{ meal.details }}</h4>
-      <h4>Calories: {{ meal.calories }}</h4>
-    </div>
-  `
-})
-export class MealComponent {
-  public meal: Meal;
-}
-
-
-@Component({
-  selector: 'meal-list',
-  inputs: ['mealList'],
-  outputs: ['onMealSelect'],
-  directives: [MealComponent],
-  template: `
-    <div class="container">
-      <meal-display *ngFor="#currentMeal of mealList"
-        (click)="mealClicked(currentMeal)"
-        [class.selected]="currentMeal === selectedMeal"
-        [meal]="currentMeal">
-      </meal-display>
-    </div>
-  `
-})
-export class MealListComponent {
-  public mealList: Meal[];
-  public onMealSelect: EventEmitter<Meal>;
-  public selectedMeal: Meal;
-  constructor() {
-    this.onMealSelect = new EventEmitter();
-  }
-  mealClicked(clickedMeal: Meal): void {
-    this.selectedMeal = clickedMeal;
-    this.onMealSelect.emit(clickedMeal);
-  }
-}
+import { Component, EventEmitter } from 'angular2/core';
+import { Meal } from './meal.model';
+import { MealListComponent } from './meal-list.component';
+import { MealComponent } from './meal.component';
+import { EditMealComponent } from './edit-meal.component';
 
 @Component({
   selector: 'my-app',
